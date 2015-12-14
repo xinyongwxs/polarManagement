@@ -1,0 +1,99 @@
+/**
+ * New node file
+ */
+var dao = require('./ServiceDAO.js'),
+helpers = require('./helpers.js'),
+fs = require('fs');
+
+var treeDataHandlerNew = function(originData) {
+	var outputData = [], tempData = [];
+	var outputTempData = [];
+	originData.forEach(function(item, idx) {
+		var nodeData = null;
+		if (item.data !== null) {
+			nodeData = JSON.parse(item.data);
+		}
+		outputTempData.push({
+			id: item.id,
+			label: item.name,
+			parent: item.parent,
+			data: nodeData,
+			children: [],
+			isRead: false
+		});
+	});
+	
+	//First, push all the root nodes to outputData
+	outputTempData.forEach(function(item, idx) {
+		item.isRead = false;
+		item.children = [];
+		if (item.parent === null) {
+			item.isRead = true;
+			outputData.push(item);
+		}
+	});
+	
+	var pushToChildren = function(children, item) {
+		var childrenLen = children.length;
+		children.some(function(paItem, idx) {
+			if (paItem.id === item.parent) {
+				item.isRead = true;
+				paItem.children.push(item);
+				return true;
+			} else if (idx === childrenLen - 1) {
+				children.forEach(function(ppItem, idx) {
+					pushToChildren(ppItem.children, item);
+				});
+			}
+		});
+	};
+	
+	//Second: push all the child nodes to the children arrays of root nodes.
+	outputTempData.forEach(function(item, idx) {
+		if (item.parent !== null && item.isRead === false) {
+			pushToChildren(outputData, item);
+		}
+	});
+	
+	return outputData;
+};
+
+var treeNodeDataTransform = function(reqBody) {
+	var result = {
+		name: reqBody.name,
+		parent: reqBody.parent,
+		icon: "",
+		submenu: "",
+		data: JSON.stringify({
+			description: reqBody.description,
+			createtime: reqBody.createdtime
+		}),
+		itemtype: reqBody.sourcedatatype,
+		datasetId: reqBody.datasetId,
+		submenu: reqBody.submenu
+	};
+	
+	return result;
+};
+
+exports.getTreeData = function(req, res) {
+	dao.getTreeData(function(err, user_data) {
+		if (err) {
+			helpers.send_failure(res, err);
+		} else {
+			var outputData = treeDataHandlerNew(user_data);
+			helpers.send_success(res, outputData);
+		}
+	});
+};
+
+exports.buildNewTreeNode = function(req, res) {
+	var reqParam = treeNodeDataTransform(req.body);
+	dao.buildNewTreeNode(reqParam, function(err, rows) {
+		if (err) {
+			helpers.send_failure(res, err);
+		} else {
+			helpers.send_success(res, "success");
+		}
+	});
+};

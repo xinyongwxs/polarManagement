@@ -1,0 +1,81 @@
+{
+    "error": null,
+    "data": [{
+        "id": 1,
+        "label": "root menu",
+        "parent": null,
+        "data": {
+            "description": "desc test",
+            "createtime": "2015-10-11",
+            "datatype": "position-property"
+        },
+        "children": [{
+            "id": 2,
+            "label": "polar menu2",
+            "parent": 1,
+            "data": {
+                "description": "desc test",
+                "createtime": "2015-10-11",
+                "datatype": "position-property"
+            },
+            "children": [{
+                "id": 5,
+                "label": "sub menu 5",
+                "parent": 2,
+                "data": {
+                    "description": "desc test",
+                    "createtime": "2015-10-11",
+                    "datatype": "position-property"
+                },
+                "children": [{
+                    "id": 7,
+                    "label": "sub menu 6",
+                    "parent": 5,
+                    "data": {
+                        "description": "desc test",
+                        "createtime": "2015-10-11",
+                        "datatype": "position-property"
+                    },
+                    "children": [],
+                    "isRead": true
+                }],
+                "isRead": true
+            }],
+            "isRead": true
+        }],
+        "isRead": true
+    }, {
+        "id": 4,
+        "label": "polar menu",
+        "parent": null,
+        "data": {
+            "description": "desc test",
+            "createtime": "2015-10-11",
+            "datatype": "position-property"
+        },
+        "children": [{
+            "id": 3,
+            "label": "sub menu 3",
+            "parent": 4,
+            "data": {
+                "description": "desc test",
+                "createtime": "2015-10-11",
+                "datatype": "position-property"
+            },
+            "children": [],
+            "isRead": true
+        }, {
+            "id": 9,
+            "label": "sub menu 9",
+            "parent": 4,
+            "data": {
+                "description": "desc test",
+                "createtime": "2015-10-11",
+                "datatype": "position-property"
+            },
+            "children": [],
+            "isRead": true
+        }],
+        "isRead": true
+    }]
+}

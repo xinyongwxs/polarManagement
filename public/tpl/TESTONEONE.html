@@ -1,0 +1,59 @@
+<div class=" col" ng-show="edit_view_flag">
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading font-bold">添加数据</div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">数据名称:</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                <input ng-model="name" class="form-control input-sm w-sm inline m-r" aria-controls="DataTables_Table_0" name="datamenu" type="text"  ><!--**-->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">选择图标:</label>
+                        <div class="col-sm-9">
+                            <a ui-sref="app.ui.icons">
+                                <span translate="aside.nav.components.ui_kits.ICONS">Icons</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">数据描述:</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                <textarea ng-model="desc" class="form-control" name="datadescription" rows="3" placeholder="请输入……"></textarea><!--正在做这个数据绑定！！！！！！！-->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">采集时间:</label>
+                        <div class="col-sm-9" ng-controller="DatepickerDemoCtrl">
+                            <div class="input-group w-md">
+                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="pickdt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">数据类型:</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                <select ng-model="sourcedatatype" class="input-sm form-control w-sm inline v-middle" ng-options="sourcedatatype.name for sourcedatatype in typename">
+                                    <option value = ''>选择数据类型</option>
+                                    <!--<option  ng-repeat="i in typename" value="{{i.name}}">{{i.name}}</option>-->
+                                </select>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button ng-click="try_edit_the_selected_branch();" class="btn btn-success btn-sm"><i class="fa fa-fw m-r-xs fa-plus"></i> 提交</button>
+    </div>
+</div>

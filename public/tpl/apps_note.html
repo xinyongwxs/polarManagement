@@ -1,0 +1,155 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="NoteCtrl">
+  <!-- column -->
+  <div class="col w-lg lt b-r">
+    <div class="vbox">
+      <div class="wrapper">
+        <a href class="pull-right btn btn-sm btn-success m-t-n-xs" ng-click="adddatabase()">新建</a>
+        <div class="h4">数据源设置</div>
+      </div>
+      <div class="wrapper b-t m-t-xxs">
+        <div class="input-group">
+          <span class="input-group-addon input-sm"><i class="fa fa-search"></i></span>
+          <input type="text" class="form-control input-sm" placeholder="搜索" ng-model="query">
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="padder">
+              <div class="list-group">
+                <a ng-repeat="note in notes" class="list-group-item b-l-{{note.color}} b-l-3x hover-anchor" ng-class="{'hover': note.selected }" ng-click="selectNote(note)">
+                  <span ng-click='deleteNote(note)'    class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                  <span class="block text-ellipsis">{{ note.content ? note.content : '空' }}</span>
+                  <!--<small class="text-muted">{{ note.date | fromNow }}</small>-->
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+  <!-- column -->
+  <div class="col">
+    <div class="vbox">
+      <div ng-show="checkninf" class="wrapper bg-light lt b-b">
+        <div class="m-b">
+          <span class="m-b">创建日期:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>
+          <div class="m-l inline dropdown" dropdown>
+            <a class="v-middle pos-rlt inline bg-{{note.color}}" dropdown-toggle style="width:16px;height:16px;top:-2px"></a>
+            <div class="dropdown-menu animated fadeInUp w wrapper">
+              <a ng-repeat="color in colors" class="inline m-xs bg-{{color}}" style="width:18px;height:18px" ng-click=" note.color= color "></a>
+            </div>
+          </div>
+        </div>
+        <div class="m-b">数据库类型: <span >{{ note.type}}</span></div>
+        <div class="m-b">数据库名称: <span>{{ note.content}}</span></div>
+        <div class="m-b">连接地址: <span>{{ note.address}}</span></div>
+        <div class="m-b">用户名: <span>{{ note.username}}</span></div>
+        <div class="m-b">密码: <span></span></div>
+      </div>
+      <div class="row-row" ng-show="add_database">
+        <div class="cell">
+          <!--<div class="cell-inner">
+            <textarea class="form-control no-radius no-border no-bg wrapper-lg text-md" style="height:100%;" ng-model="note.content">
+            </textarea>
+          </div>
+          -->
+          <div class="wrapper-md">
+            <form class="form-horizontal">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label text-left">选择数据类型</label>
+                  <div class="col-sm-6">
+                    <div class="btn-group" ng-init="datasource_type = 'database'">
+                      <label class="btn btn-sm btn-info"    ng-model="datasource_type"  btn-radio="'database'" >学科数据库 <i class="fa fa-check text-active"></i></label>
+                      <label class="btn btn-sm btn-primary" ng-model="datasource_type" btn-radio="'arcgis'" > ArcGIS地图服务<i class="fa fa-check text-active"></i></label>
+                    </div>
+                  </div>
+                </div>
+                <div id="SunDatabase" ng-show="datasource_type == 'database'">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">数据库类型</label>
+                    <div class="col-sm-6">
+                      <select ng-model="typename" class="form-control" ng-options="typename.name for typename in database">
+                        <option value = ''>---选择数据库类型---</option>
+                        <!--<option  ng-repeat=" t in database" value="{{t.name}}">{{t.name}}</option>-->
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">数据库名称</label>
+                    <div class="col-sm-6">
+                      <input type="text" ng-model="databasename" placeholder="请输入数据库名称" class="form-control ng-pristine ng-valid ng-touched"></input>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">连接地址</label>
+                    <div class="col-sm-6">
+                      <input type="text" ng-model="linkaddress" placeholder="请输入图层地址" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+                        <!--<option ng-repeat=" p in people" value="{{p.name}}">{{p.name}}</option>-->
+                      </input>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">用户名</label>
+                    <div class="col-sm-6">
+                      <input type="text" ng-model="dbusername" placeholder="请输入用户名" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+                      </input>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">密码</label>
+                    <div class="col-sm-6">
+                      <input type="password" ng-model="password" class="form-control" placeholder="请输入密码">
+                      </input>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="GeoDatabase" ng-show="datasource_type == 'arcgis'">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">数据源类型</label>
+                    <div class="col-xs-6">
+                      <select ng-model="arctype" class="form-control"  >
+                        <option ng-repeat="g in  geodatabase" value="{{g.name}}">{{g.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">数据名称</label>
+                    <div class="col-sm-6">
+                      <input type="text" ng-model="Arcdataname" placeholder="请输入数据名称" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">图层地址</label>
+                    <div class="col-sm-6">
+                      <input type="text" ng-model="asyncSelected" placeholder="请输入图层地址" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <input type="submit" ng-click="createNote()" class="btn btn-success" value="确认" >
+                  <input type="submit" ng-click="cancel()" class="btn btn-warning" value="取消">
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+</div>
+<!-- /hbox layout -->

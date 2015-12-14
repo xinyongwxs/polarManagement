@@ -1,0 +1,147 @@
+{
+  "items":[
+    {
+      "group" : "普通用户",
+      "first": "徐",
+      "last": "慧芳",
+      "company": "",
+      "mobile": "121 364 135",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a3.jpg"
+    },
+    {
+      "group" : "普通用户",
+      "first": "李",
+      "last": "芳芳",
+      "company": "**部门",
+      "mobile": "102 394 821",
+      "home": "(021) 9876 9485",
+      "work": "(021) 2130 3049",
+      "notes": "",
+      "avatar": "img/a0.jpg"
+    },
+    {
+       "group" : "高级用户",
+      "first": "孙",
+      "last": "芝",
+      "company": "**部门",
+      "mobile": "100 364 135",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a1.jpg"
+    },
+    {
+      "group" : "普通用户",
+      "first": "戴",
+      "last": "亮",
+      "company": "",
+      "mobile": "324 123 123",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a2.jpg"
+    },
+    {
+      "group" : "普通用户",
+      "first": "张",
+      "last": "倩",
+      "company": "",
+      "mobile": "765 434 565",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a4.jpg"
+    },
+    {
+      "group" : "管理员",
+      "first": "许",
+      "last": "坤",
+      "company": "",
+      "mobile": "432 364 455",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a5.jpg"
+    },
+    {
+      "group" : "普通用户",
+      "first": "张",
+      "last": "欢",
+      "company": "",
+      "mobile": "433 364 234",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a6.jpg"
+    },
+    {
+      "group" : "管理员",
+      "first": "刘",
+      "last": "爽",
+      "company": "",
+      "mobile": "332 431 223",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a7.jpg"
+    },
+    {
+      "group" : "管理员",
+      "first": "何",
+      "last": "盛琪",
+      "company": "",
+      "mobile": "543 453 890",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a8.jpg"
+    },
+    {
+      "group" : "普通用户",
+      "first": "艾",
+      "last": "青",
+      "company": "",
+      "mobile": "656 565 789",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a9.jpg"
+    },
+    {
+      "group" : "高级用户",
+      "first": "徐",
+      "last": "志",
+      "company": "",
+      "mobile": "434 987 898",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a8.jpg"
+    },
+    {
+      "group" : "高级用户",
+      "first": "周",
+      "last": "雪楠",
+      "company": "",
+      "mobile": "098 888 897",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a8.jpg"
+    },
+    {
+      "group" : "普通用户",
+      "first": "周",
+      "last": "妮娇",
+      "company": "",
+      "mobile": "854 656 879",
+      "home": "(021) 1234 8755",
+      "work": "(021) 9000 9877",
+      "notes": "",
+      "avatar": "img/a8.jpg"
+    }
+  ]
+}

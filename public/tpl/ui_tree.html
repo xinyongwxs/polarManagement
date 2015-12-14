@@ -1,0 +1,44 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="AbnTestController">
+  <div class="col">
+    <div class="wrapper-md">
+      <div class="b-a bg-light dk r r-2x">
+        <span ng-if="doing_async">...loading...</span>
+        <abn-tree
+          tree-data         = "my_data" 
+          tree-control      = "my_tree" 
+          on-select         = "my_tree_handler(branch)"
+          on-add            = "open(size)"
+          expand-level      = "2" 
+          initial-selection = "Granny Smith"
+          icon-leaf         = "fa fa-file-o"
+          icon-expand       = "fa fa-plus"
+          icon-collapse     = "fa fa-minus"
+          >
+        </abn-tree>
+      </div>
+    </div>
+  </div>
+  <!-------------------------------on-add=try_adding_a_branch(branch)-------------------------------------------->
+
+  <script type="text/ng-template" id="myModalContent.html">
+    <div ng-include="'tpl/ui_tree_add.html'"></div>
+  </script>
+
+  <!--content-->
+  <div class="panel b-a">
+    <div class="panel-heading b-b b-light">{{contenttitle|| '数据名称'}}
+      <button class="btn btn-default btn-xs pull-right" ng-init="isCollapsed = false" ng-click="isCollapsed = !isCollapsed">收起/展开</button>
+    </div>
+    <div collapse="isCollapsed" class="panel-body">
+      {{output|| '数据详细信息'}}
+      <br>
+      {{dataicon|| ' '}}
+      <br>
+      {{datetime|| ' '}}
+      <br>
+      {{datatype|| ' '}}
+    </div>
+  </div>
+  <!--content end-->
+
+</div>
