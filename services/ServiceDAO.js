@@ -27,4 +27,17 @@ exports.buildNewTreeNode = function(reqParam, callback) {
 			 reqParam.itemtype,
 			 reqParam.datasetId], 
 			callback);
+	dbc.end();
+};
+
+exports.createOneImagesDataSet = function(reqParam, callback) {
+	var dbc = db.db();
+	dbc.query('insert into imagesDataSet (id,imageName,resultsData,site,batch) values (?,?,?,?,?)',
+			[uuid.v1(), 
+			 reqParam.imageName,
+			 reqParam.resultsData,
+			 reqParam.site,
+			 reqParam.batch], 
+			callback);
+	dbc.end();
 };
