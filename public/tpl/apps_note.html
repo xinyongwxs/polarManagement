@@ -54,8 +54,8 @@
         <div class="m-b">数据库类型: <span >{{ note.type}}</span></div>
         <div class="m-b">数据库名称: <span>{{ note.content}}</span></div>
         <div class="m-b">连接地址: <span>{{ note.address}}</span></div>
-        <div class="m-b">用户名: <span>{{ note.username}}</span></div>
-        <div class="m-b">密码: <span></span></div>
+        <div class="m-b">用户名: <span>{{ note.username || "  /"}}</span></div>
+        <div class="m-b">密码: <span>{{ note.password || "  /"}}</span></div>
       </div>
       <div class="row-row" ng-show="add_database">
         <div class="cell">
@@ -121,8 +121,9 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label text-left">数据源类型</label>
                     <div class="col-xs-6">
-                      <select ng-model="arctype" class="form-control"  >
-                        <option ng-repeat="g in  geodatabase" value="{{g.name}}">{{g.name}}</option>
+                      <select ng-model="arctype" class="form-control" ng-options="arctype.name for arctype in geodatabase" >
+                        <!--<option ng-repeat="g in  geodatabase" value="{{g.name}}">{{g.name}}</option>-->
+                        <option value = ''>---选择数据源类型---</option>
                       </select>
                     </div>
                   </div>

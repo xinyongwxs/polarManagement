@@ -316,7 +316,9 @@
                   current.label=data.label;
                   current.data.description=data.data.description;
                   current.data.datatype = data.data.datatype;
+                  current.data.icon = data.data.icon;
                   current.data.createtime = data.data.createtime;
+                  current.data.dataset = data.data.dataset;
                   current.expanded = true;
                 } else {
                   alert("wrong action")

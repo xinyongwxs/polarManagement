@@ -11,6 +11,7 @@ app.controller('NoteCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.add_database = false;
   $scope.adddatabase = function(){
     $scope.add_database = true;
+    $scope.checkninf = false;
     $scope.databasename = "";
     $scope.linkaddress = "";
     $scope.dbusername = "";
@@ -23,25 +24,25 @@ app.controller('NoteCtrl', ['$scope', '$http', function($scope, $http) {
 
   }
 
-  //$scope.datasource = {databasename : "",
-  //linkaddress : "",
-  //dbusername : "",
-  //password : "",
-  //Arcdataname : "",
-  //typename: "",
-  //arctype : "",
-  //datasource_type: ""
-  //};
-
-  $scope.databasename = "";
-  $scope.linkaddress = "";
-  $scope.dbusername = "";
-  $scope.password = "";
-  $scope.Arcdataname = "";
-  $scope.typename = "";
-  $scope.arctype = "";
-  $scope.datasource_type = "";
-  $scope.asyncSelected = "";
+  ////$scope.datasource = {databasename : "",
+  ////linkaddress : "",
+  ////dbusername : "",
+  ////password : "",
+  ////Arcdataname : "",
+typename: "",
+  ////arctype : "",
+  ////datasource_type: ""
+  ////};
+  //
+  //$scope.databasename = "";
+  //$scope.linkaddress = "";
+  //$scope.dbusername = "";
+  //$scope.password = "";
+  //$scope.Arcdataname = "";
+  //$scope.typename = "";
+  //$scope.arctype = "";
+  //$scope.datasource_type = "";
+  //$scope.asyncSelected = "";
 
 
   $scope.createNote = function(){
@@ -54,9 +55,10 @@ app.controller('NoteCtrl', ['$scope', '$http', function($scope, $http) {
           content: $scope.databasename,
           color: $scope.colors[Math.floor((Math.random()*3))],
           date: Date.now(),
-          type:$scope.typename,
+          type:$scope.typename.name,
           address:$scope.linkaddress,
-          username:$scope.dbusername
+          username:$scope.dbusername,
+          password:$scope.password
         };
       }
       break;
@@ -66,8 +68,9 @@ app.controller('NoteCtrl', ['$scope', '$http', function($scope, $http) {
           content: $scope.Arcdataname,
           color: $scope.colors[Math.floor((Math.random()*3))],
           date: Date.now(),
-          type: $scope.arctype,
-          address:$scope.asyncSelected
+          type: $scope.arctype.name,
+          address:$scope.asyncSelected,
+          password:$scope.password
         };
       }
         break;

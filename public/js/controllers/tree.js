@@ -26,12 +26,13 @@ app.factory('treeDataFactory', ['$http', '$q', function($http, $q) {
 				data: {
 					name: newItem.name,
 					parent: newItem.parent,
-					itemtype: newItem.sourcedatatype,
+					itemtype: newItem.typename,
 					description: newItem.desc,
 					createdtime: newItem.pickdt,
+                    icon:newItem.dayicon,
 					submenu: null,
 					children: null,
-					datasetId: newItem.dataset
+					datasetId: newItem.datasetname
 				}
 			});
 			return request;
@@ -44,6 +45,8 @@ app.controller('AbnTestController',['$scope', '$modal', 'treeDataFactory', funct
         var _ref;
         $scope.contenttitle = branch.label;
         $scope.output = '数据描述：'+ branch.data.description;
+        $scope.dataicon = '数据图标：'+ branch.data.icon;
+        $scope.datasetname = '数据集：' + branch.data.datasetId;
         $scope.datetime = '采集时间：'+ branch.data.createtime;
         $scope.datatype = '数据类型：'+ branch.data.datatype;
         if((_ref = branch.data)!= null ? _ref.description : void 0){
@@ -59,6 +62,8 @@ app.controller('AbnTestController',['$scope', '$modal', 'treeDataFactory', funct
     $scope.name = '';
     $scope.desc = '';
     $scope.sourcedatatype = '';
+    $scope.dataset = '';
+    $scope.icon = '';
     $scope.pickdt = new Date();
 
     $scope.try_edit_the_selected_branch = function() {
@@ -69,6 +74,8 @@ app.controller('AbnTestController',['$scope', '$modal', 'treeDataFactory', funct
             label: $scope.name,
             data: {
                 description:$scope.desc,
+                icon:$scope.dayicon,
+                datasetId:$scope.dataset,
                 createtime:$scope.pickdt,
                 datatype:$scope.sourcedatatype.name
             }
@@ -134,6 +141,7 @@ app.controller('ModalInstanceCtrl', ['$scope', 'treeDataFactory', '$modalInstanc
 //    		description: $scope.menuItem.datadescription,
 //    		createdtime: $scope.menuItem.pickdt
 //    };
+    $scope.dayicon = ['icon-graph','icon-doc','fa fa-fw fa-file-image-o','fa fa-fw fa-desktop','fa fa-fw fa-database','fa fa-fw fa-location-arrow'];
 
     $scope.typename = [
         {name:'位置-时间-图片'},
@@ -142,6 +150,11 @@ app.controller('ModalInstanceCtrl', ['$scope', 'treeDataFactory', '$modalInstanc
         {name:'位置-属性'},
         {name:'位置-图片'},
         {name:'文本'}
+    ];
+
+    $scope.datasetname = [
+        {name:'空间服务数据集'},
+        {name:'图片数据集'}
     ];
 
     $scope.cancel = function () {
