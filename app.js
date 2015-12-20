@@ -8,7 +8,8 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , services = require('./services');
+  , services = require('./services'),
+  multer = require('multer');
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static('public'));
+app.use(multer({ dest: 'uploads/'}));
 
 // development only
 if ('development' == app.get('env')) {
@@ -32,6 +34,7 @@ app.get('/', routes.index);
 app.post('/buildNewTreeNode', services.buildNewTreeNode);
 app.get('/menuItems', services.getTreeData);
 app.get('/createOneImagesDataSet', services.createOneImagesDataSet);
+services.uploadSingleImage(app);
 services.uploadMultipleFiles(app);
 
 http.createServer(app).listen(app.get('port'), function(){

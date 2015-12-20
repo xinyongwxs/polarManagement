@@ -48,3 +48,7 @@ exports.createOneImagesDataSet = function(req, res) {
 exports.uploadMultipleFiles = function(app) {
 	fileUploader.uploadMultipleFiles(app);
 };
+
+exports.uploadSingleImage = function(app) {
+	fileUploader.uploadSingleImage(app);
+};
