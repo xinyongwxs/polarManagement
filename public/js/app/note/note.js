@@ -20,69 +20,26 @@ app.controller('NoteCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.typename = "";
     $scope.arctype = "";
     $scope.asyncSelected = "";
-    $scope.datasource_type = "database";
+    //$scope.datasource_type = "arcgis";
 
   }
 
-  ////$scope.datasource = {databasename : "",
-  ////linkaddress : "",
-  ////dbusername : "",
-  ////password : "",
-  ////Arcdataname : "",
 typename: "",
-  ////arctype : "",
-  ////datasource_type: ""
-  ////};
-  //
-  //$scope.databasename = "";
-  //$scope.linkaddress = "";
-  //$scope.dbusername = "";
-  //$scope.password = "";
-  //$scope.Arcdataname = "";
-  //$scope.typename = "";
-  //$scope.arctype = "";
-  //$scope.datasource_type = "";
-  //$scope.asyncSelected = "";
+
 
 
   $scope.createNote = function(){
-    console.log($scope.databasename || $scope.Arcdataname);
-    var note = {};
-    switch ($scope.datasource_type){
-      case 'database':
-      {
-        note = {
-          content: $scope.databasename,
-          color: $scope.colors[Math.floor((Math.random()*3))],
-          date: Date.now(),
-          type:$scope.typename.name,
-          address:$scope.linkaddress,
-          username:$scope.dbusername,
-          password:$scope.password
-        };
-      }
-      break;
-      case 'arcgis':
-      {
-        note = {
-          content: $scope.Arcdataname,
-          color: $scope.colors[Math.floor((Math.random()*3))],
-          date: Date.now(),
-          type: $scope.arctype.name,
-          address:$scope.asyncSelected,
-          password:$scope.password
-        };
-      }
-        break;
-    }
-    //var note = {
-    //  content: $scope.databasename || $scope.Arcdataname,
-    //  color: $scope.colors[Math.floor((Math.random()*3))],
-    //  date: Date.now(),
-    //  type:$scope.typename || $scope.arctype,
-    //  address:$scope.linkaddress || $scope.asyncSelected,
-    //  username:$scope.dbusername
-    //};
+    //console.log($scope.databasename || $scope.Arcdataname);
+    //var note = {};
+    var note = {
+      content: $scope.Arcdataname,
+      color: $scope.colors[Math.floor((Math.random()*3))],
+      date: Date.now(),
+      type: $scope.arctype.name,
+      address:$scope.asyncSelected,
+      password:$scope.password
+    };
+
     $scope.notes.push(note);
     $scope.selectNote(note);
     $scope.add_database = false;
@@ -98,6 +55,7 @@ typename: "",
   }
 
   $scope.selectNote = function(note){
+    $scope.add_database = false;
     angular.forEach($scope.notes, function(note) {
       note.selected = false;
     });

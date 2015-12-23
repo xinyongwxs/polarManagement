@@ -51,11 +51,11 @@
             </div>
           </div>
         </div>
-        <div class="m-b">数据库类型: <span >{{ note.type}}</span></div>
-        <div class="m-b">数据库名称: <span>{{ note.content}}</span></div>
-        <div class="m-b">连接地址: <span>{{ note.address}}</span></div>
-        <div class="m-b">用户名: <span>{{ note.username || "  /"}}</span></div>
-        <div class="m-b">密码: <span>{{ note.password || "  /"}}</span></div>
+        <div class="m-b">数据源类型: <span >{{ note.type}}</span></div>
+        <div class="m-b">数据名称: <span>{{ note.content}}</span></div>
+        <div class="m-b">图层地址: <span>{{ note.address}}</span></div>
+        <!--<div class="m-b">用户名: <span>{{ note.username || "  /"}}</span></div>-->
+        <!--<div class="m-b">密码: <span>{{ note.password || "  /"}}</span></div>-->
       </div>
       <div class="row-row" ng-show="add_database">
         <div class="cell">
@@ -64,60 +64,60 @@
             </textarea>
           </div>
           -->
-          <div class="wrapper-md">
+          <div class="wrapper-md" >
             <form class="form-horizontal">
               <fieldset>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label text-left">选择数据类型</label>
-                  <div class="col-sm-6">
-                    <div class="btn-group" ng-init="datasource_type = 'database'">
-                      <label class="btn btn-sm btn-info"    ng-model="datasource_type"  btn-radio="'database'" >学科数据库 <i class="fa fa-check text-active"></i></label>
-                      <label class="btn btn-sm btn-primary" ng-model="datasource_type" btn-radio="'arcgis'" > ArcGIS地图服务<i class="fa fa-check text-active"></i></label>
-                    </div>
-                  </div>
-                </div>
-                <div id="SunDatabase" ng-show="datasource_type == 'database'">
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label text-left">数据库类型</label>
-                    <div class="col-sm-6">
-                      <select ng-model="typename" class="form-control" ng-options="typename.name for typename in database">
-                        <option value = ''>---选择数据库类型---</option>
-                        <!--<option  ng-repeat=" t in database" value="{{t.name}}">{{t.name}}</option>-->
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label text-left">数据库名称</label>
-                    <div class="col-sm-6">
-                      <input type="text" ng-model="databasename" placeholder="请输入数据库名称" class="form-control ng-pristine ng-valid ng-touched"></input>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label text-left">连接地址</label>
-                    <div class="col-sm-6">
-                      <input type="text" ng-model="linkaddress" placeholder="请输入图层地址" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
-                        <!--<option ng-repeat=" p in people" value="{{p.name}}">{{p.name}}</option>-->
-                      </input>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label text-left">用户名</label>
-                    <div class="col-sm-6">
-                      <input type="text" ng-model="dbusername" placeholder="请输入用户名" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
-                      </input>
-                    </div>
-                  </div>
+                <!--<div class="form-group">-->
+                  <!--<label class="col-sm-2 control-label text-left">选择数据类型</label>-->
+                  <!--<div class="col-sm-6">-->
+                    <!--<div class="btn-group" ng-init="datasource_type = 'database'">-->
+                      <!--<label class="btn btn-sm btn-info"    ng-model="datasource_type"  btn-radio="'database'" >学科数据库 <i class="fa fa-check text-active"></i></label>-->
+                      <!--<label class="btn btn-sm btn-primary" ng-model="datasource_type" btn-radio="'arcgis'" > ArcGIS地图服务<i class="fa fa-check text-active"></i></label>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div id="SunDatabase" ng-show="datasource_type == 'database'">-->
+                  <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label text-left">数据库类型</label>-->
+                    <!--<div class="col-sm-6">-->
+                      <!--<select ng-model="typename" class="form-control" ng-options="typename.name for typename in database">-->
+                        <!--<option value = ''>-&#45;&#45;选择数据库类型-&#45;&#45;</option>-->
+                        <!--&lt;!&ndash;<option  ng-repeat=" t in database" value="{{t.name}}">{{t.name}}</option>&ndash;&gt;-->
+                      <!--</select>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label text-left">数据库名称</label>-->
+                    <!--<div class="col-sm-6">-->
+                      <!--<input type="text" ng-model="databasename" placeholder="请输入数据库名称" class="form-control ng-pristine ng-valid ng-touched"></input>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label text-left">连接地址</label>-->
+                    <!--<div class="col-sm-6">-->
+                      <!--<input type="text" ng-model="linkaddress" placeholder="请输入图层地址" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">-->
+                        <!--&lt;!&ndash;<option ng-repeat=" p in people" value="{{p.name}}">{{p.name}}</option>&ndash;&gt;-->
+                      <!--</input>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label text-left">用户名</label>-->
+                    <!--<div class="col-sm-6">-->
+                      <!--<input type="text" ng-model="dbusername" placeholder="请输入用户名" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">-->
+                      <!--</input>-->
+                    <!--</div>-->
+                  <!--</div>-->
 
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label text-left">密码</label>
-                    <div class="col-sm-6">
-                      <input type="password" ng-model="password" class="form-control" placeholder="请输入密码">
-                      </input>
-                    </div>
-                  </div>
-                </div>
+                  <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label text-left">密码</label>-->
+                    <!--<div class="col-sm-6">-->
+                      <!--<input type="password" ng-model="password" class="form-control" placeholder="请输入密码">-->
+                      <!--</input>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
 
-                <div id="GeoDatabase" ng-show="datasource_type == 'arcgis'">
+                <div id="GeoDatabase">
                   <div class="form-group">
                     <label class="col-sm-2 control-label text-left">数据源类型</label>
                     <div class="col-xs-6">

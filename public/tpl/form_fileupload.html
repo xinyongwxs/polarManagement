@@ -1,29 +1,32 @@
 <div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="FileUploadCtrl"  nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
   <div class="col w-lg bg-light b-r bg-auto">
-    <div class="wrapper-md dker b-b">
-      <h3 class="m-n font-thin">数据设置</h3>
-    </div>
-    <div class="wrapper-md">      
-      <div ng-show="uploader.isHTML5" class="m-b-md">
-          <!-- 3. nv-file-over uploader="link" over-class="className" -->
-          <div class="b-a b-2x b-dashed wrapper-lg bg-white text-center m-b" nv-file-over="" over-class="b-info" uploader="uploader">
-              关系数据库数据
-          </div>
+    <!--<div class="wrapper-md dker b-b">-->
+      <!--<h3 class="m-n font-thin">数据设置</h3>-->
+    <!--</div>-->
+    <div class="wrapper-md">
+      <!--<div ng-show="uploader.isHTML5" class="m-b-md">-->
+          <!--&lt;!&ndash; 3. nv-file-over uploader="link" over-class="className" &ndash;&gt;-->
+          <!--<div class="b-a b-2x b-dashed wrapper-lg bg-white text-center m-b" nv-file-over="" over-class="b-info" uploader="uploader">-->
+              <!--关系数据库数据-->
+          <!--</div>-->
 
-          <!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
-          <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
-              <div nv-file-over="" uploader="uploader" over-class="b-danger" class="b-a b-2x b-dashed wrapper-lg lter text-center">
-                  空间数据服务
-              </div>
-          </div>
-      </div>
+          <!--&lt;!&ndash; Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" &ndash;&gt;-->
+          <!--<div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">-->
+              <!--<div nv-file-over="" uploader="uploader" over-class="b-danger" class="b-a b-2x b-dashed wrapper-lg lter text-center">-->
+                  <!--空间数据服务-->
+              <!--</div>-->
+          <!--</div>-->
+      <!--</div>-->
 
       <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
-      <p>多个一并导入</p>
+      <p>导入图片数据</p>
       <input type="file" nv-file-select="" uploader="uploader" multiple  />
 
-      <p class="m-t-md">逐个导入</p>
-      <input type="file" nv-file-select="" uploader="uploader" />
+      <p class="m-t-md">导入zip数据</p>
+      <input type="file" nv-file-select="" uploader="uploader" multiple  />
+
+      <!--<p class="m-t-md">逐个导入</p>-->
+      <!--<input type="file" nv-file-select="" uploader="uploader" />-->
     </div>
   </div>
   <div class="col">
