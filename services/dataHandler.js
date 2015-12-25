@@ -70,3 +70,29 @@ exports.treeNodeDataTransform = function(reqBody) {
 	
 	return result;
 };
+
+exports.parseImageName = function(fileName) {
+	var rawNameArray = fileName.split("_");
+	return {
+		imageName: fileName,
+		site: rawNameArray[0],
+		location: rawNameArray[1],
+		dateStr: rawNameArray[5],
+		type: "image"
+	};
+};
+
+exports.parseFileName = function(fileName) {
+	var rawNameArray = fileName.split("_");
+	var fileType = fileName.split(".")[1];
+	var dateStr = rawNameArray[5].split(".")[0];
+	return {
+		fileName: fileName,
+		site: rawNameArray[0],
+		location: rawNameArray[1],
+		dateStr: dateStr,
+		fileType: fileType,
+		rawNameArray: rawNameArray,
+		type: "image"
+	};
+};

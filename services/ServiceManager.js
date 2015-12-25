@@ -45,10 +45,24 @@ exports.createOneImagesDataSet = function(req, res) {
 	});
 };
 
+exports.getAllDataSetNames = function(req, res) {
+	dao.getAllDataSetNames(function(err, user_data) {
+		if (err) {
+			helpers.send_failure(res, err);
+		} else {
+			helpers.send_success(res, user_data);
+		}
+	});
+};
+
 exports.uploadMultipleFiles = function(app) {
 	fileUploader.uploadMultipleFiles(app);
 };
 
 exports.uploadSingleImage = function(app) {
 	fileUploader.uploadSingleImage(app);
+};
+
+exports.uplaodSingleFile = function(app) {
+	fileUploader.uplaodSingleFile(app);
 };

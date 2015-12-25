@@ -18,6 +18,13 @@ app.factory('treeDataFactory', ['$http', '$q', function($http, $q) {
 			var result = JSON.parse(httpReq.responseText).data;
 			return result;
 		},
+		getAllDataSetNames: function() {
+			var httpReq = new XMLHttpRequest();
+			httpReq.open("GET", "/getAllDataSetNames", false);
+			httpReq.send();
+			var result = JSON.parse(httpReq.responseText).data;
+			return result;
+		},
 		buildNewTreeNode: function(newItem) {
 //			var deferred = $q.defer();
 			var request = $http({
@@ -32,7 +39,7 @@ app.factory('treeDataFactory', ['$http', '$q', function($http, $q) {
                     icon:newItem.dayicon,
 					submenu: null,
 					children: null,
-					datasetId: newItem.datasetname
+					datasetId: newItem.datasetId
 				}
 			});
 			return request;
@@ -151,11 +158,17 @@ app.controller('ModalInstanceCtrl', ['$scope', 'treeDataFactory', '$modalInstanc
         {name:'位置-图片'},
         {name:'文本'}
     ];
+    
+    var originNames = treeDataFactory.getAllDataSetNames();
+    var aNames = [], aDIds = [];
+    originNames.forEach(function(val, idx) {
+    	aNames.push({name: val.name});
+    	aDIds.push(val.id);
+    });
 
-    $scope.datasetname = [
-        {name:'空间服务数据集'},
-        {name:'图片数据集'}
-    ];
+    $scope.datasetname = aNames;
+    
+    $scope.originNames = originNames;
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
@@ -164,6 +177,12 @@ app.controller('ModalInstanceCtrl', ['$scope', 'treeDataFactory', '$modalInstanc
 
     $scope.submitNewNode = function(){
     	var submitItem = $scope.menuItem;
+    	$scope.originNames.some(function(val, idx) {
+    		if (val.name === submitItem.dataset.name) {
+    			submitItem.datasetId = val.id;
+    			return true;
+    		}
+    	});
     	var request = treeDataFactory.buildNewTreeNode(submitItem);
     	request.success(function(data) {
     		console.log(data);

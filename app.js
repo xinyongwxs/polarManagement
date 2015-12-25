@@ -33,9 +33,11 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.post('/buildNewTreeNode', services.buildNewTreeNode);
 app.get('/menuItems', services.getTreeData);
-app.get('/createOneImagesDataSet', services.createOneImagesDataSet);
-services.uploadSingleImage(app);
-services.uploadMultipleFiles(app);
+//app.post('/createOneImagesDataSet', services.createOneImagesDataSet);
+app.get('/getAllDataSetNames', services.getAllDataSetNames);
+services.uplaodSingleFile(app);
+//services.uploadSingleImage(app);
+//services.uploadMultipleFiles(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
